@@ -32,6 +32,9 @@
                             <h5 class="card-title text-center text-uppercase fw-bolder">
                                 {{ $project['name'] }}
                             </h5>
+                            <div class="py-2 fst-italic">Tipo:
+                                {{ $project->type ? $project->type->name : 'Nessuna tipologia' }}
+                            </div>
                             <div class="card-text">Data Inizio: {{ $project['start_date'] }}</div>
                             <div class="card-text">Data Fine: {{ $project['end_date'] }}</div>
                             <a href="{{ route('admin.project.show', ['project' => $project->id]) }}"

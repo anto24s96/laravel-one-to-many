@@ -32,6 +32,22 @@
                         </div>
 
                         <div class="mb-3">
+                            <label for="type_id" class="form-label">Type:</label>
+                            <select class="form-select w-25 @error('type_id') is-invalid @enderror" name="type_id"
+                                id="type_id">
+                                <option value="">Select type</option>
+                                @foreach ($types as $type)
+                                    <option value="{{ $type->id }}" @selected($type->id == old('type_id'))>
+                                        {{ $type->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('type_id')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
                             <label for="description" class="form-label">Description:</label>
                             <textarea class="form-control @error('description') is-invalid @enderror" id="textarea-description" rows="10"
                                 name="description" required>{{ old('description') }}</textarea>

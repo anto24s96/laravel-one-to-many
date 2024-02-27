@@ -37,6 +37,9 @@
                     <div class="card-body bg-dark text-white fst-italic rounded-bottom-2">
                         <h5 class="card-title text-uppercase fw-bolder">Nome Progetto: <span>{{ $project['name'] }}</span>
                         </h5>
+                        <div class="py-2 fst-italic">Tipo:
+                            {{ $project->type ? $project->type->name : 'Nessuna tipologia' }}
+                        </div>
                         <div class="card-text"> Data Inizio: {{ $project['start_date'] }}</div>
                         <div class="card-text"> Data Fine: {{ $project['end_date'] }}</div>
                         <div class="card-text py-2"> Descrizione: {{ $project['description'] }}</div>

@@ -26,6 +26,22 @@
                         </div>
 
                         <div class="mb-3">
+                            <label for="type_id" class="form-label">Type:</label>
+                            <select class="form-select w-25 @error('type_id') is-invalid @enderror" name="type_id"
+                                id="type_id">
+                                <option value="">Select type</option>
+                                @foreach ($types as $type)
+                                    <option value="{{ $type->id }}" @selected($type->id == old('type_id', $project->type ? $project->type->id : ''))>
+                                        {{ $type->name }}
+                                    </option>
+                                @endforeach
+                            </select>
+                            @error('type_id')
+                                <div class="text-danger">{{ $message }}</div>
+                            @enderror
+                        </div>
+
+                        <div class="mb-3">
                             <label for="logo" class="form-label">Logo:</label>
                             @if ($project->logo != null)
                                 <img src="{{ asset('storage/' . $project->logo) }}" alt="cover_image" class="w-25">
